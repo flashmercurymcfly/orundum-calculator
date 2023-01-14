@@ -92,7 +92,7 @@ function calculateOrundum() {
 
     orundumAmount += anni * weeksAvailable;
     orundumAmount += document.getElementById('prime').value === '' || document.getElementById('prime').value === 0 ? (0 * 180) : (prime * 180);
-    let totalPulls = Math.floor(orundumAmount/600) + parseInt(onePermit) + parseInt(tenPermit);
+    let totalPulls = Math.floor(orundumAmount/600) + parseInt(document.getElementById('onePermit').value === '' || document.getElementById('onePermit').value === 0 ? 0 : onePermit) + parseInt(document.getElementById('tenPermit').value === '' || document.getElementById('tenPermit').value === 0 ? 0 : tenPermit);
 
     document.getElementById('resultLabel').innerHTML = 'This event is estimated to arrive for global in about ' + parseFloat(actualTimeDiff/2629746000).toFixed(2) + ' months.  You will have approximately ' + orundumAmount + ' orundum by the time this event may come to global.  With permits, this is around ' + Math.floor(totalPulls) + ' pulls.'
 }
