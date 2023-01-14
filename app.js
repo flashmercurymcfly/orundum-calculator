@@ -59,6 +59,7 @@ function changeEvent() {
 }
 
 function calculateOrundum() {
+    let currentOrundum = document.getElementById('currentO').value;
     let eventIndex = document.getElementById('events').selectedIndex;
     let monthly = document.getElementById('monthly').checked;
     let cert = document.getElementById('cert').checked;
@@ -77,7 +78,7 @@ function calculateOrundum() {
     let monthsAvailable = Math.floor(actualTimeDiff/2629746000);
     let daysAvailable = Math.floor(actualTimeDiff/86400000);
     let weeksAvailable = Math.floor(actualTimeDiff/604800000);
-    orundumAmount = 0;
+    orundumAmount = parseInt(currentOrundum);
     if(monthly) {
         orundumAmount += daysAvailable * 200;
     }
@@ -92,7 +93,7 @@ function calculateOrundum() {
 
     orundumAmount += anni * weeksAvailable;
     orundumAmount += document.getElementById('prime').value === '' || document.getElementById('prime').value === 0 ? (0 * 180) : (prime * 180);
-    let totalPulls = Math.floor(orundumAmount/600) + parseInt(document.getElementById('onePermit').value === '' || document.getElementById('onePermit').value === 0 ? 0 : onePermit) + parseInt(document.getElementById('tenPermit').value === '' || document.getElementById('tenPermit').value === 0 ? 0 : tenPermit);
+    let totalPulls = Math.floor(orundumAmount/600) + parseInt(document.getElementById('onePermit').value === '' || document.getElementById('onePermit').value === 0 ? 0 : onePermit) + parseInt(document.getElementById('tenPermit').value === '' || document.getElementById('tenPermit').value === 0 ? 0 : (tenPermit * 10));
 
     document.getElementById('resultLabel').innerHTML = 'This event is estimated to arrive for global in about ' + parseFloat(actualTimeDiff/2629746000).toFixed(2) + ' months.  You will have approximately ' + orundumAmount + ' orundum by the time this event may come to global.  With permits, this is around ' + Math.floor(totalPulls) + ' pulls.'
 }
