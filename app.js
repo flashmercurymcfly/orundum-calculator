@@ -77,6 +77,7 @@ function calculateOrundum() {
     let monthsAvailable = Math.floor(actualTimeDiff/2629746000);
     let daysAvailable = Math.floor(actualTimeDiff/86400000);
     let weeksAvailable = Math.floor(actualTimeDiff/604800000);
+    orundumAmount = 0;
     if(monthly) {
         orundumAmount += daysAvailable * 200;
     }
